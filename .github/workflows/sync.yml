@@ -33,6 +33,7 @@ jobs:
         run: |
           folder=".github"
           rsync --recursive --exclude="workflows/_*.yml" "source/${folder}/" "target/${folder}"
+
           rm -f "target/${folder}/workflows/_*.yml"
           rm -f "target/${folder}/workflows/markdown-link-check.yml"
           rm -rf "target/${folder}/markdown-link-check"
@@ -44,6 +45,7 @@ jobs:
             cd target
             git add .
             synced_files="$(git status --porcelain)"
+
             if [ -z "${synced_files}" ]; then
               echo ":smile: No change detected. Everything is already in sync."
             else
