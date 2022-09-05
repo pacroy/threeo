@@ -7,8 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chairat Onyaem (Par)",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.1"
-  }
+  "license": "MIT"
 }
