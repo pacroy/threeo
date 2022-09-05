@@ -1,10 +1,10 @@
 const http = require('http')
 const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
+  const url = new URL(req.url, `http://${req.headers.host}`)
   console.log(`${req.method} ${url.pathname}${url.search}`)
   res
     .writeHead(307, {
-      'Location': `https://github.com/search${url.search}`,
+      Location: `https://github.com/search${url.search}`,
       'Cache-Control': 'no-cache'
     })
     .end()
