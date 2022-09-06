@@ -5,7 +5,12 @@ const server = http.createServer((req, res) => {
   res
     .writeHead(307, {
       Location: `https://github.com/search${url.search}`,
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'Content-Security-Policy': "frame-ancestors 'none'",
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block'
     })
     .end()
 })
