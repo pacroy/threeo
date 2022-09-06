@@ -1,11 +1,14 @@
-const express = require('express')
-const app = express()
-const port = 3000
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const http = require('http')
+const server = http.createServer((req, res) => {
+  const url = new URL(req.url, `http://${req.headers.host}`)
+  console.log(`${req.method} ${url.pathname}${url.search}`)
+  res
+    .writeHead(307, {
+      Location: `https://github.com/search${url.search}`,
+      'Cache-Control': 'no-cache'
+    })
+    .end()
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+server.listen(3000)
+console.log('Listening on port 3000 ...')
